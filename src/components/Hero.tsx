@@ -6,6 +6,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Award, Globe, Heart } from 'lucide-react';
+import HandParticles from './HandParticles';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -47,31 +48,8 @@ export default function Hero({ onExploreClick }: HeroProps) {
       id="hero"
       className="min-h-screen relative flex flex-col justify-center bg-white pt-24 pb-16 md:py-32 overflow-hidden"
     >
-      {/* Tilted image on the right with a white gradient overlay from the left */}
-      <div className="absolute right-0 top-0 bottom-0 w-full md:w-[55%] pointer-events-none select-none z-0 overflow-hidden">
-        <div className="relative w-full h-full flex items-center justify-end">
-          <motion.div
-            initial={{ opacity: 0, x: 80, rotate: 8, scale: 0.95 }}
-            animate={{ opacity: 0.22, x: 0, rotate: 12, scale: 1 }}
-            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="w-[115%] md:w-[110%] aspect-[4/3] max-w-[680px] overflow-hidden border border-gray-100 rounded-3xl shadow-2xl origin-center translate-x-[25%] md:translate-x-[20%]"
-          >
-            <img
-              src="/images/project_kallisto_1784579446542.jpg"
-              alt="Decorative portfolio work showcase"
-              className="w-full h-full object-cover scale-105"
-              referrerPolicy="no-referrer"
-            />
-          </motion.div>
-          
-          {/* White gradient overlay from left to right covering the image background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 md:via-white/70 to-transparent w-full h-full" />
-          
-          {/* Top and bottom soft vignettes to blend image into the white page */}
-          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent" />
-        </div>
-      </div>
+      {/* Interactive Particle Hands Background */}
+      <HandParticles />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col justify-between h-full grow">
         <div className="my-auto">
