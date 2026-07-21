@@ -53,15 +53,17 @@ export default function StudioInfo() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div>
                 <p className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-2">Clarity & Purpose</p>
-                <p className="text-sm text-gray-500 font-light">
-                  Every design choice should make a decision easier for the user. I strive to create layouts that are intuitive, straightforward, and focused on helping visitors take the next step.
-                </p>
+                <ul className="text-sm text-gray-500 font-light space-y-2 list-disc list-inside">
+                  <li>Every element earns its place by reducing friction, not adding it.</li>
+                  <li>Layouts lead visitors forward — intuitive, focused, and purposeful.</li>
+                </ul>
               </div>
               <div>
                 <p className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-2">Modern Front-End</p>
-                <p className="text-sm text-gray-500 font-light">
-                  I build websites using fast, modern code. Design and development must work together seamlessly to ensure quick load times, excellent accessibility, and reliable performance.
-                </p>
+                <ul className="text-sm text-gray-500 font-light space-y-2 list-disc list-inside">
+                  <li>I build with modern code that loads fast and works on every device.</li>
+                  <li>Design and development fuse for speed, accessibility, and reliable performance.</li>
+                </ul>
               </div>
             </div>
           </div>
