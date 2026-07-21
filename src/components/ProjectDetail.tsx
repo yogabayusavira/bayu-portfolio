@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { X, ArrowLeft, ArrowRight, ArrowUpRight, HelpCircle, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from '../types';
@@ -17,7 +17,8 @@ interface ProjectDetailProps {
 }
 
 export default function ProjectDetail({ project, onClose, onNextProject, onPrevProject }: ProjectDetailProps) {
-  
+  const [showFull, setShowFull] = useState(false);
+
   // Back to top on select
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -145,13 +146,40 @@ export default function ProjectDetail({ project, onClose, onNextProject, onPrevP
         </div>
 
         {/* Large Media Banner */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-gray-100 shadow-sm bg-gray-50">
-          <img
-            src={project.coverImage}
-            alt={`${project.title} Hero Details`}
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
-          />
+        <div className="relative overflow-hidden rounded-xl border border-gray-100 shadow-sm bg-white">
+          {!showFull && (
+            <div className="overflow-hidden relative" style={{ maxHeight: '85vh' }}>
+              <img
+                src={project.siteImage}
+                alt={`${project.title} Hero Details`}
+                referrerPolicy="no-referrer"
+                className="w-full object-cover object-top"
+              />
+              <div
+                className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.93) 15%, rgba(255,255,255,0.72) 38%, rgba(255,255,255,0.35) 65%, rgba(255,255,255,0.08) 88%, rgba(255,255,255,0) 100%)',
+                }}
+              />
+              <button
+                onClick={() => setShowFull(true)}
+                className="absolute bottom-5 left-1/2 -translate-x-1/2 px-5 py-2.5 border border-gray-300 bg-white/90 backdrop-blur-sm text-xs font-mono text-gray-700 hover:border-gray-950 hover:text-black hover:bg-white transition-all rounded-md uppercase tracking-widest cursor-pointer shadow-sm z-10"
+              >
+                Show Full
+              </button>
+            </div>
+          )}
+          {showFull && (
+            <div className="rounded-xl overflow-hidden">
+              <img
+                src={project.siteImage}
+                alt={`${project.title} Hero Details`}
+                referrerPolicy="no-referrer"
+                className="w-full object-contain"
+              />
+            </div>
+          )}
         </div>
 
         {/* Challenge & Solution Side-by-Side (Bento Layout) */}

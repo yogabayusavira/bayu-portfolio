@@ -131,7 +131,7 @@ export default function Hero({ onExploreClick }: HeroProps) {
                 }}
                 className="px-6 py-4 text-sm font-medium text-gray-500 hover:text-black border-b border-transparent hover:border-[#1a1a1a] transition-all duration-200 cursor-pointer"
               >
-                Our Philosophy
+                My Philosophy
               </button>
             </motion.div>
           </motion.div>

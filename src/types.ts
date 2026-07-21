@@ -15,6 +15,7 @@ export interface Project {
   description: string;
   longDescription: string;
   coverImage: string;
+  siteImage: string;
   challenge: string;
   solution: string;
   process: {

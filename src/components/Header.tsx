@@ -109,7 +109,7 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
           <button
             id="nav-cta"
             onClick={() => scrollToSection('contact')}
-            className="hidden md:flex items-center gap-1.5 px-4 py-1.5 text-xs font-mono border border-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300"
+            className="hidden md:flex items-center gap-1.5 px-4 py-1.5 text-xs font-mono border border-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300 cursor-pointer"
           >
             <span>Inquire Now</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

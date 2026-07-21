@@ -4,39 +4,19 @@
  */
 
 import React, { useEffect } from 'react';
+import { getCalApi } from '@calcom/embed-react';
 import { CornerDownRight, Mail, Compass, Clock, Calendar } from 'lucide-react';
 
 export default function ContactSection() {
   useEffect(() => {
-    // 1. Dynamically load the vanilla Cal.com script if not already present
-    if (!(window as any).Cal) {
-      (function (C: any, A: Document, L: string) {
-        C.Cal = C.Cal || function () {
-          let a = C.Cal.q = C.Cal.q || [];
-          a.push(arguments);
-        };
-        let d = A.getElementsByTagName("script")[0];
-        let s = A.createElement("script") as HTMLScriptElement;
-        s.async = true;
-        s.src = L;
-        if (d && d.parentNode) {
-          d.parentNode.insertBefore(s, d);
-        } else {
-          A.head.appendChild(s);
-        }
-      })(window, document, "https://assets.cal.com/embed/embed.js");
-    }
-
-    // 2. Initialize Cal.com when the script is loaded/stubbed
-    const cal = (window as any).Cal;
-    if (cal) {
-      cal("init", { origin: "https://cal.com" });
+    (async () => {
+      const cal = await getCalApi({ namespace: "discovery" });
       cal("ui", {
         styles: { branding: { brandColor: "#1a1a1a" } },
         hideEventTypeDetails: false,
         layout: "month_view"
       });
-    }
+    })();
 
     // 3. Robust Scroll-Lock Guard
     // When Cal's modal is active, it may set overflow: hidden on the body.
@@ -136,7 +116,7 @@ export default function ContactSection() {
                   <span className="uppercase tracking-widest">Response Time</span>
                 </div>
                 <p className="text-gray-500 leading-relaxed font-sans text-xs sm:text-sm font-light">
-                  I typically respond to emails within one business day.
+                  I typically respond to emails in hours.
                 </p>
               </div>
 
@@ -172,7 +152,7 @@ export default function ContactSection() {
                   </li>
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                    <span>Usually available within a few business days</span>
+                    <span>Bring a coffee</span>
                   </li>
                 </ul>
               </div>
@@ -182,6 +162,7 @@ export default function ContactSection() {
               <button
                 type="button"
                 data-cal-link="guramo/discovery"
+                data-cal-namespace="discovery"
                 data-cal-config='{"layout":"month_view"}'
                 className="w-full sm:w-auto bg-[#1a1a1a] hover:bg-black text-white px-8 py-4 rounded text-xs font-mono tracking-widest uppercase transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-3 group cursor-pointer"
               >

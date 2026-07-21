@@ -13,11 +13,11 @@ export default function StudioInfo() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-24 md:space-y-36">
         
         {/* Profile Bio Section - Asymmetric Editorial Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-stretch">
           {/* Portrait Graphic Column */}
           <div className="lg:col-span-5 relative">
             <div className="absolute inset-0 border border-[#1a1a1a] rounded-md translate-x-4 translate-y-4 -z-10" />
-            <div className="aspect-square w-full overflow-hidden bg-gray-50 rounded-md border border-gray-200 shadow-sm relative">
+            <div className="w-full h-full overflow-hidden bg-gray-50 rounded-md border border-gray-200 shadow-sm relative">
               <img
                 src={STUDIO_INFO.profileImage}
                 alt={STUDIO_INFO.name}
@@ -32,7 +32,7 @@ export default function StudioInfo() {
           </div>
 
           {/* Narrative Column */}
-          <div className="lg:col-span-7 space-y-6 md:pl-6">
+          <div className="lg:col-span-7 space-y-6 md:pl-6 self-center">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#1a1a1a]" />
               <span className="text-xs font-mono tracking-widest text-gray-400 uppercase">About Me</span>
