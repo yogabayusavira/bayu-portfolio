@@ -4,20 +4,15 @@
  */
 
 import React from 'react';
-import { ArrowUp, Instagram, Linkedin, Twitter, Dribbble } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import { STUDIO_INFO } from '../data';
 
 interface FooterProps {
   scrollToSection: (id: string) => void;
 }
 
 export default function Footer({ scrollToSection }: FooterProps) {
-  
-  const socialLinks = [
-    { label: 'LinkedIn', url: 'https://linkedin.com' },
-    { label: 'GitHub', url: 'https://github.com' },
-    { label: 'Twitter / X', url: 'https://x.com' },
-    { label: 'Instagram', url: 'https://instagram.com' },
-  ];
+  const socialLinks = STUDIO_INFO.socialLinks;
 
   return (
     <footer id="main-footer" className="bg-[#1a1a1a] text-white py-16 md:py-24 border-t border-gray-900">
