@@ -237,11 +237,25 @@ export default function HandParticles() {
     const repelRadius = 80;
     const repelForce = 1.2;
 
+    // Return spring boost — activated when click pulse finishes to snap particles back
+    const returnBoost = { strength: 0 };
+
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (clickPulse.intensity > 0) {
-        clickPulse.intensity -= 0.04; // Decays in ~400ms (25 frames)
+        clickPulse.intensity -= 0.07; // Decays in ~210ms (15 frames)
+        if (clickPulse.intensity <= 0) {
+          clickPulse.intensity = 0;
+          // Trigger return snap
+          returnBoost.strength = 1.0;
+        }
+      }
+
+      // Fade the return boost gradually
+      if (returnBoost.strength > 0) {
+        returnBoost.strength -= 0.06; // ~300ms fade
+        if (returnBoost.strength < 0) returnBoost.strength = 0;
       }
 
       const m = mouseRef.current;
@@ -333,13 +347,18 @@ export default function HandParticles() {
         }
 
         // 4. Update Particle Physics (Spring Easing)
-        const ax = (finalTx - p.x) * stiffness;
-        const ay = (finalTy - p.y) * stiffness;
+        // Boost stiffness temporarily after click pulse to snap particles back
+        const currentStiffness = stiffness + returnBoost.strength * 0.10;
+        const ax = (finalTx - p.x) * currentStiffness;
+        const ay = (finalTy - p.y) * currentStiffness;
+
+        // During return, also slightly increase damping to crisp up the snap
+        const currentDamping = damping - returnBoost.strength * 0.05;
 
         p.vx += ax;
         p.vy += ay;
-        p.vx *= damping;
-        p.vy *= damping;
+        p.vx *= currentDamping;
+        p.vy *= currentDamping;
 
         p.x += p.vx;
         p.y += p.vy;
