@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     role: "Digital Designer",
     description: "A website redesign concept for Yamaha Motor focused on improving usability, simplifying navigation, and creating a modern digital experience while respecting the strength of an established global brand.",
     longDescription: "A website redesign concept for Yamaha Motor focused on improving usability, simplifying navigation, and creating a modern digital experience while respecting the strength of an established global brand. Large enterprise websites often contain extensive information that can overwhelm visitors and make navigation difficult. This project presents a structured solution to organize content intuitively.",
-    coverImage: "/src/assets/images/project_nordic_1784579464535.jpg",
+    coverImage: "/src/assets/images/site_yamaha.png",
     challenge: "Large enterprise websites often contain extensive information that can overwhelm visitors and make navigation difficult.",
     solution: "Create a clearer information hierarchy, improve navigation, and simplify the browsing experience without sacrificing brand identity.",
     process: [
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     role: "Digital Designer",
     description: "A marketing landing page focused on communicating ideas with clarity through strong visual hierarchy, thoughtful storytelling, and purposeful calls to action.",
     longDescription: "A marketing landing page focused on communicating ideas with clarity through strong visual hierarchy, thoughtful storytelling, and purposeful calls to action. Every element has been placed with a specific focus on keeping readers engaged and preventing cognitive overload.",
-    coverImage: "/src/assets/images/project_aether_1784579428002.jpg",
+    coverImage: "/src/assets/images/site_futuremodern.png",
     challenge: "Present complex ideas in a way that's engaging, easy to understand, and visually balanced.",
     solution: "Use thoughtful spacing, strong visual hierarchy, and focused messaging to create a smooth reading experience.",
     process: [
@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
     role: "Digital Designer",
     description: "A marketing website for LaserReach designed to clearly communicate the platform's value, establish credibility, and guide visitors naturally toward learning more.",
     longDescription: "A marketing website for LaserReach designed to clearly communicate the platform's value, establish credibility, and guide visitors naturally toward learning more. It translates complex technical capabilities into benefit-driven structures that help businesses connect with the service.",
-    coverImage: "/src/assets/images/project_kallisto_1784579446542.jpg",
+    coverImage: "/src/assets/images/site_laserreach.png",
     challenge: "Communicate a technical SaaS product in a way that's easy to understand without overwhelming visitors.",
     solution: "Create a clear content hierarchy, structured storytelling, and purposeful calls to action that naturally guide visitors through the product.",
     process: [
@@ -118,7 +118,7 @@ export const PROJECTS: Project[] = [
     role: "Digital Designer",
     description: "A website for We Are Ikigai, an established Asian brand, designed to strengthen its identity while creating a clean, approachable, and intuitive browsing experience.",
     longDescription: "A website for We Are Ikigai, an established Asian brand, designed to strengthen its identity while creating a clean, approachable, and intuitive browsing experience. It balances strong, traditional branding elements with clean responsive typography.",
-    coverImage: "/src/assets/images/project_novalis_1784579560428.jpg",
+    coverImage: "/src/assets/images/site_ikigai.png",
     challenge: "Balance strong visual branding with an intuitive user experience across different devices.",
     solution: "Create a consistent visual language supported by clear navigation, thoughtful layouts, and responsive design.",
     process: [
@@ -148,7 +148,7 @@ export const PROJECTS: Project[] = [
     role: "Designer & Developer",
     description: "My personal project exploring branding, thoughtful user experiences, and my philosophy that good design helps people make decisions more easily.",
     longDescription: "My personal project exploring branding, thoughtful user experiences, and my philosophy that good design helps people make decisions more easily. It serves as an exploration of minimalist UI patterns and focused user flows.",
-    coverImage: "/src/assets/images/project_kallisto_1784579446542.jpg",
+    coverImage: "/src/assets/images/site_guramo.png",
     challenge: "Create a website that feels trustworthy and professional without overwhelming visitors with unnecessary information.",
     solution: "Build the experience around a simple philosophy: every element should have a purpose, every interaction should feel natural, and every page should guide visitors toward the next step.",
     process: [
