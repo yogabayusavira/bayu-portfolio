@@ -57,7 +57,7 @@ export default function Hero({ onExploreClick }: HeroProps) {
             className="w-[115%] md:w-[110%] aspect-[4/3] max-w-[680px] overflow-hidden border border-gray-100 rounded-3xl shadow-2xl origin-center translate-x-[25%] md:translate-x-[20%]"
           >
             <img
-              src="/src/assets/images/project_kallisto_1784579446542.jpg"
+              src="/images/project_kallisto_1784579446542.jpg"
               alt="Decorative portfolio work showcase"
               className="w-full h-full object-cover scale-105"
               referrerPolicy="no-referrer"
