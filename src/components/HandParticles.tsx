@@ -82,9 +82,12 @@ export default function HandParticles() {
         const data = imgData.data;
         const sampledPoints: { sx: number; sy: number }[] = [];
 
+        const isMobile = window.innerWidth < 768;
+        const step = isMobile ? 3 : 2;
+
         // Sample pixels with higher transparency threshold
-        for (let y = 0; y < sampleHeight; y += 2) {
-          for (let x = 0; x < sampleWidth; x += 2) {
+        for (let y = 0; y < sampleHeight; y += step) {
+          for (let x = 0; x < sampleWidth; x += step) {
             const idx = (y * sampleWidth + x) * 4;
             const alpha = data[idx + 3];
             if (alpha > 80) { // Slightly lower alpha threshold to capture outline details better
@@ -107,6 +110,12 @@ export default function HandParticles() {
       const rightPoints = sampleImage(imgRight, false);
 
       particles = [];
+      const isMobile = window.innerWidth < 768;
+      
+      const baseRadius = isMobile ? 0.6 : 0.8;
+      const rangeRadius = isMobile ? 1.2 : 1.6;
+      const baseAlpha = isMobile ? 0.15 : 0.30;
+      const rangeAlpha = isMobile ? 0.45 : 0.50;
 
       // Left hand particles
       leftPoints.forEach((pt) => {
@@ -119,8 +128,8 @@ export default function HandParticles() {
           vy: 0,
           tx: 0,
           ty: 0,
-          radius: Math.random() * 1.6 + 0.8, // Slightly larger particles
-          alpha: Math.random() * 0.50 + 0.30, // Much more visible alpha range
+          radius: Math.random() * rangeRadius + baseRadius,
+          alpha: Math.random() * rangeAlpha + baseAlpha,
           isLeft: true
         });
       });
@@ -136,12 +145,14 @@ export default function HandParticles() {
           vy: 0,
           tx: 0,
           ty: 0,
-          radius: Math.random() * 1.6 + 0.8,
-          alpha: Math.random() * 0.50 + 0.30,
+          radius: Math.random() * rangeRadius + baseRadius,
+          alpha: Math.random() * rangeAlpha + baseAlpha,
           isLeft: false
         });
       });
     };
+
+    let wasMobile = window.innerWidth < 768;
 
     // Handle resizing & responsive positioning
     const resizeCanvas = () => {
@@ -149,8 +160,13 @@ export default function HandParticles() {
       canvas.width = rect?.width || window.innerWidth;
       canvas.height = rect?.height || window.innerHeight;
       
-      // If particles are empty (due to loading delays), try initializing
-      if (particles.length === 0 && imgLeft.complete && imgRight.complete) {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile !== wasMobile) {
+        wasMobile = isMobile;
+        if (imgLeft.complete && imgRight.complete) {
+          initParticles();
+        }
+      } else if (particles.length === 0 && imgLeft.complete && imgRight.complete) {
         initParticles();
       }
     };
