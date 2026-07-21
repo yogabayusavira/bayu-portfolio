@@ -1,20 +1,45 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Bayu Savira — Portfolio
 
-# Run and deploy your AI Studio app
+Personal portfolio website for **Bayu Savira**, digital designer & strategist. Built with React, Vite, and Tailwind CSS.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/b6e9c773-56a5-417a-844e-b2086a023d85
+- **React 19** + **TypeScript**
+- **Vite** (dev/build)
+- **Tailwind CSS v4** (`@tailwindcss/vite`)
+- **Motion** (Framer Motion) — animations
+- **Lucide React** — icons
+- **Cal.com** — booking embed
+- **Google Gen AI** — AI features
 
-## Run Locally
+## Sections
 
-**Prerequisites:**  Node.js
+- **Hero** — intro with animated tagline
+- **Selected Works** — filterable/searchable project grid
+- **Studio** — about / philosophy
+- **Inquiry** — contact form & Cal.com booking
+- **Footer** — navigation & social links
 
+## Dev
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npm run dev        # localhost:3000
+npm run build      # production build
+npm run preview    # preview build
+```
+
+## Project Structure
+
+```
+src/
+├── components/    # React components (Header, Hero, PortfolioGrid, etc.)
+├── data.ts        # project data + project list
+├── types.ts       # TypeScript types
+├── App.tsx        # root layout
+└── main.tsx       # entry point
+```
+
+## License
+
+Apache 2.0
