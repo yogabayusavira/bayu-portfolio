@@ -3,11 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Award, Flame, Lightbulb, CheckSquare, Sparkles, MapPin, Milestone } from 'lucide-react';
 import { STUDIO_INFO, CAPABILITIES, AWARDS } from '../data';
 
 export default function StudioInfo() {
+  const [colored, setColored] = useState(false);
   return (
     <section id="studio" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-24 md:space-y-36">
@@ -22,7 +23,10 @@ export default function StudioInfo() {
                 src={STUDIO_INFO.profileImage}
                 alt={STUDIO_INFO.name}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                onClick={() => setColored(c => !c)}
+                className={`w-full h-full object-cover transition-all duration-700 cursor-pointer ${
+                  colored ? 'grayscale-0' : 'grayscale hover:grayscale-0'
+                }`}
               />
               <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm border border-gray-100 rounded py-2 px-3 flex items-center gap-1.5 shadow-sm">
                 <MapPin className="w-3.5 h-3.5 text-[#1a1a1a]" />
