@@ -12,7 +12,8 @@ export const STUDIO_INFO = {
   bio: "My approach is guided by a simple belief: good design isn't about adding more—it's about making decisions easier. I believe visitors shouldn't feel overwhelmed by too many choices. Every page should have a clear purpose, every interaction should feel natural, and every element should earn its place.\n\nWhen we remove the unnecessary noise, simplicity becomes a powerful tool that helps people know what to do next. I strive to create web experiences that are not only visually refined and fast, but genuinely effective at helping businesses grow.",
   philosophy: "Good design isn't about adding more—it's about making decisions easier. I believe visitors shouldn't feel overwhelmed by too many choices. Every page should have a clear purpose, every interaction should feel natural, and every element should earn its place. Simplicity isn't about removing features—it's about helping people know what to do next.",
   location: "Remote",
-  timezone: "GMT+7",
+  timezone: "UTC+7",
+  email: "bayu@guramo.com",
   profileImage: "/images/Bayu Savira.jpg"
 };
 

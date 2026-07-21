@@ -6,6 +6,7 @@
 import React, { useEffect } from 'react';
 import { getCalApi } from '@calcom/embed-react';
 import { CornerDownRight, Mail, Compass, Clock, Calendar } from 'lucide-react';
+import { STUDIO_INFO } from '../data';
 
 export default function ContactSection() {
   useEffect(() => {
@@ -87,10 +88,10 @@ export default function ContactSection() {
                   For general questions, collaborations, or simply to say hello, feel free to send me an email.
                 </p>
                 <a
-                  href="mailto:bayu@guramo.com"
+                  href={`mailto:${STUDIO_INFO.email}`}
                   className="block text-sm md:text-base font-semibold text-[#1a1a1a] hover:text-black transition-colors font-sans pt-1"
                 >
-                  bayu@guramo.com
+                  {STUDIO_INFO.email}
                 </a>
               </div>
 
@@ -103,7 +104,7 @@ export default function ContactSection() {
                   <span className="uppercase tracking-widest">Location</span>
                 </div>
                 <p className="text-gray-800 text-sm md:text-base font-semibold font-sans">
-                  Bali, Indonesia (UTC+8)
+                  {STUDIO_INFO.location} ({STUDIO_INFO.timezone})
                 </p>
               </div>
 
