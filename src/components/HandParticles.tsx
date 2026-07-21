@@ -203,6 +203,34 @@ export default function HandParticles() {
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
 
+    // Click/Touch pulse for interactive tap effect
+    const clickPulse = { x: 0, y: 0, intensity: 0 };
+
+    const handleCanvasClick = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+      
+      clickPulse.x = clickX;
+      clickPulse.y = clickY;
+      clickPulse.intensity = 1.0;
+    };
+
+    const handleCanvasTouch = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        const clickX = e.touches[0].clientX - rect.left;
+        const clickY = e.touches[0].clientY - rect.top;
+        
+        clickPulse.x = clickX;
+        clickPulse.y = clickY;
+        clickPulse.intensity = 1.0;
+      }
+    };
+
+    window.addEventListener('click', handleCanvasClick);
+    window.addEventListener('touchstart', handleCanvasTouch, { passive: true });
+
     // Physics Engine settings
     const stiffness = 0.05;
     const damping = 0.82;
@@ -212,9 +240,14 @@ export default function HandParticles() {
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      if (clickPulse.intensity > 0) {
+        clickPulse.intensity -= 0.04; // Decays in ~400ms (25 frames)
+      }
+
       const m = mouseRef.current;
       const isLargeScreen = canvas.width >= 1024;
       const isMediumScreen = canvas.width >= 768 && canvas.width < 1024;
+      const isMobile = canvas.width < 768; // Derive here so it's always in scope
 
       // Layout specifications for the hands based on screen size
       let leftHandW = canvas.width * 0.50;
@@ -284,6 +317,21 @@ export default function HandParticles() {
           }
         }
 
+        // 3.5. Click/Touch Shockwave Repel Effect
+        if (clickPulse.intensity > 0) {
+          const dx = p.x - clickPulse.x;
+          const dy = p.y - clickPulse.y;
+          const dist = Math.hypot(dx, dy);
+          const clickRepelRadius = isMobile ? 100 : 140;
+
+          if (dist < clickRepelRadius) {
+            const force = ((clickRepelRadius - dist) / clickRepelRadius) * clickPulse.intensity * 1.2;
+            const angle = Math.atan2(dy, dx);
+            finalTx += Math.cos(angle) * force * clickRepelRadius * 0.6;
+            finalTy += Math.sin(angle) * force * clickRepelRadius * 0.6;
+          }
+        }
+
         // 4. Update Particle Physics (Spring Easing)
         const ax = (finalTx - p.x) * stiffness;
         const ay = (finalTy - p.y) * stiffness;
@@ -339,6 +387,8 @@ export default function HandParticles() {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('click', handleCanvasClick);
+      window.removeEventListener('touchstart', handleCanvasTouch);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
