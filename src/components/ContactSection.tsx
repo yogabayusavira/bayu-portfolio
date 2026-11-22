@@ -162,7 +162,7 @@ export default function ContactSection() {
             <div className="pt-4">
               <button
                 type="button"
-                data-cal-link="guramo/discovery"
+                data-cal-link="bayusavira/alignment"
                 data-cal-namespace="discovery"
                 data-cal-config='{"layout":"month_view"}'
                 className="w-full sm:w-auto bg-[#1a1a1a] hover:bg-black text-white px-8 py-4 rounded text-xs font-mono tracking-widest uppercase transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-3 group cursor-pointer"
